@@ -1,0 +1,7 @@
+#!/bin/csh -f
+#
+#Enable IR support - start LIRC driver & daemon
+#must be run as root
+#
+insmod -f lirc
+lircd

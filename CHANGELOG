@@ -1,0 +1,201 @@
+
+Before rxcontrol
+----------------
+-lcd handling routines
+-ID3 TAG handling routines
+ 
+Version 0.0 Oct/98
+------------------
+-call rxaudio with pipes
+-Decoding of rxaudio messages
+-first (semi-)working version
+
+Version 0.1a
+-----------
+-Artist name
+-left-right lcd scroll in file browser...
+-multi file select (playlist)
+-fix segmentation faults
+-goto next track when finished
+-repeat playlist button (#)
+-display selected & #of selections during selection
+-select all files in dir (s)
+-random select all files in directory (r)
+-Capitalize first letter of artist/song
+-Filename Scrolling 27-Oct-98
+-restart button (push "play" while playing)
+-Artist independent scrolling from song name
+-Work without an LCD
+-add customizable LCD scrolling step/delay
+-Capitalize All First Letters
+-after stop/edit pl/select more, don't restart the playlist from file #1, but
+   only if stop pressed twice (i.e. pressed when already stopped)
+-add a rxcontrol.h file with some configuration definitions
+-start rxcontrol @ boot (from init, /etc/inittab)
+-load playlists 
+-save playlists 
+-change malloc/free to static pointers/realloc
+-open output device before sending commands like "volume" to rxaudio
+
+Version 0.1
+-----------
+-add contrast option in .h  17 Nov 98
+-add seek offset option in .h for smoother seek depending on each hardware
+-minor bug fixes
+
+Version 0.2
+-----------
+-add slowrite() function to pause after writing \n to (buggy) rxaudio
+-add syslog() error reporting
+-add `#ifdef linux' check
+
+Version 0.3
+-----------
+-add 'newstate' variable to deal with race conditions when changing song
+
+Version 0.4 , 4/JAN/1999
+------------------------
+-fixed playlist remove song major bug. It only worked for the first 4 songs
+-added 'remove playlist' button, it can now delete playlist files from disk
+-TODO renamed to CHANGELOG
+-all keys are now defined in rxcontrol.h
+-opentray works ok now:ejects the CD & updates /etc/mtab correctly (unless busy)
+
+
+Version 0.5 , 7/JAN/1999
+------------------------
+-alphabetical sort of directory listing in file browser with qsort-like routine
+-executes realpath() in file browser to resolve symlinks and ..//./../. prefixes
+
+
+Version 0.6 , 17/JAN/1999
+------------------------
+-added menusel() function: a menu for selecting other functions like 
+ playlist(PL) browse/file selection/PL edit e.t.c..
+-memory leak bug fix in playlist editing.
+
+Version 0.7 , 19/JAN/1999
+------------------------
+-close input when playlist is cleared to allow umount & cdrom eject. 
+ works fine with automounter.
+-songet() renamed to filesel()
+-fixed minor bug in filesel() which showed incorrect info about the number of
+ times a file had been selected. Needs further improvement though.
+
+Version 0.8 , 26/JAN/1999
+------------------------
+-corrected a realloc() bug in menusel()
+-keys are now defined in rxkeys.h
+-added a menu to shutdown linux in menusel() accessible with key K_MENUSEL
+-now plays an intro mp3 when started :-)
+
+Version 0.9 , 26/JAN/1999
+------------------------
+-C code indented at last!
+-new rxkeys.h key definition file
+-updated README file
+-rxkeys.h renamed rxkeys_old.h New rxkeys.h uses only 9 keys (instead of 25!)
+
+
+Version 1.0 , 6/FEB/1999
+------------------------
+-added the lcdecho utility to the distribution
+-removed the annoying debug output when using the release flags
+-lcd now says "Please wait" while shuting down the linux
+-rxcontrol makes a chdir() to STARTDIR when it starts browsing files
+-changed the "Hit 'f' to Select" message
+-plbrowse() now warns if the PLDIR directory is empty and returns on any
+ keypress
+-Corrected bug which caused file browsing to fail if STARTDIR didn't have
+ a trailing '/' in rxcontrol.h
+-corrected bug in quicksort which caused it to crash when called with wrong
+ arguments
+-corrected bug in plbrowse() which caused it to crash if there were no files
+ in PLDIR
+-workaround rxaudio bugfix when re-opening the same file after returning
+ from menusel()
+
+Version 1.1 , 30/MAR/1999
+------------------------
+-added confirmation on shutdown
+-added upgrade software option accessible from menu with K_MENUSEL_UPGRD
+ button.
+-now compiles with -pedantic w/o warnings. I'm pedantic :-)
+
+
+Version 1.2 , 30/MAR/1999
+------------------------
+-now supports 10.000 files per directory/playlist (instead of 2048)
+-now reads all paths and values from a configuration file (instead of .h)
+-play now pauses when pressed while playing (instead of restarting the song)
+-rxkeys_old.h removed from the tarball
+-DEBUG options clarified in makefile
+-GOTO-top and GOTO-end keys added in file browsing & playlist editing
+ K_SCTOP,K_SCBOTTOM.
+-todo is now in the TODO file
+
+
+Version 1.3 , 2/APR/1999
+------------------------
+-corrected bug which made input_close to fail causing umount of the cdrom
+ to fail with EBUSY. Workaround, must be an rxaudio bug.
+-implemented 'kbdrate' functionality to set keyboard delay/rate at startup.
+ values are defined in the configuration file.
+
+Version 1.4a , 6/APR/1999
+-------------------------
+-IR support. At last it's here, and not in the TODO file! And it seems to 
+ work ok. It's not fully implemented, but this is a pre-release version. All 
+ should be grateful about Bryan Mattern's IR hardware donation which made 
+ this possible!
+-added ir.c, ir.h, conf2c irkeys.conf
+-ir_loadkeys.c and ir_loadkeys.h are auto-generated from conf2c
+-added lircd.conf just for reference.
+
+
+Version 1.4b , 27/JUN/1999
+----------------------------
+-corrected bug which would cause IR support to fail if compiled w/o DEBUG1 flag
+-start playing a command-line specified playlist (option: -p)
+-randomize (reorder) an already loaded playlist (K_PLEDIT_RANDOMIZE)
+-conf2c now ignores empty lines in irkeys.conf
+-added the 'irperceive' option in rxcontrol.conf which controls the auto-repeat 
+ speed of the remote.
+-minor modification to my_error/my_warning
+-added README.IR
+-new lircd.conf example. It's from a 'RadioShack 3 in one' code CBL-3313 remote
+-other minor modifications
+
+Version 1.5 , 27/JUN/1999
+----------------------------
+-recursive selection of directories (K_FSEL_RECSEL)
+-corrected bug which caused directories with extension .mp3 to be added to
+ the playlist when selecting all files or when using random selection
+
+
+Version 1.6 , 2/OCT/1999
+----------------------------
+-bug fix for recursive selection of directories (K_FSEL_RECSEL) (now it works!)
+-improved functions my_warn,my_error
+-function declarations and inclusions are now in rxcontrol.h
+-new TODO file format !
+
+Version 1.7 , 21/NOV/1999
+----------------------------
+-conf2c doesn't work with the new /bin/echo because -e is not the default. 
+ damn gnu incompatibilities, using the csh built-in echo now.
+-some minor code changes to satisfy the new compiler (egcs-2.91.66,egcs-1.1.2)
+-version 1.7 is just a bugfix to 1.6
+
+Version 1.8a , 21/NOV/1999
+----------------------------
+-this is an alpha version
+-the long awaited support for IR controll inside the menus
+-song continues to play inside the menus (when selecting song e.t.c.)
+-added the pipefilter executable which is not intended to be called by you
+
+Version 1.8b , 5/FEB/2000
+----------------------------
+-fixed bug in readconf.c
+-send blink-off init command to LCD (for the new M-O BIOS)
+-fixed path related bug pipefilter.c

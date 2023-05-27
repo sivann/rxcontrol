@@ -1,0 +1,19 @@
+lcdecho
+-------
+
+Write messages to the lcd.
+For example you may add the following in the /etc/rc.d/init.d/halt 
+just after the `echo "$message"' near the end of the script
+
+
+/usr/local/bin/lcdecho /dev/lcd "Shutdown  Complete"
+
+assuming lcdecho is installed in /usr/local/bin and /dev/lcd is the lcd
+device (or a link to the appropriate serial port)
+The  (Control L) is used to clear the LCD screen and can be produced in
+vi by pressing ^V^L
+
+Enjoy!
+
+-Spiros Ioannou
+ sivann@cs.ntua.gr

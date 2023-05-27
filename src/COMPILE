@@ -1,0 +1,26 @@
+Compilation Instructions
+------------------------
+
+
+1) Edit file rxcontrol.conf to make appropriate changes to the paths and 
+  other options.
+
+
+2) You may edit rxkeys.h to change the default keys. (optional)
+
+
+3) For Infra Red support (a big thanks to Bryan Mattern for the supplied 
+  hardware) edit irkeys.conf. 
+   At the left column you can find the definitions from rxkeys.h (description 
+  is in there). 
+   At the right column, the names correspond to the lircd key names (usualy 
+  defined in /etc/lircd.conf). If a key from the left column doesn't have or 
+  need to be used from IR, then the keyword NONE must be used instead of a 
+  keyname. 
+   Don't leave any blank lines in this file (for now).
+
+4) Edit Makefile, and make appropriate changes to DFLAGS. You must comment out
+   the 'HAVEIR' if you don't want infra red support or if lircd isn't running.
+
+5) Run 'make'
+

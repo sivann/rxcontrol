@@ -1,0 +1,24 @@
+Version 1.5
+
+This file is supplementary. Read the README, COMPILE and INSTALL files before.
+
+Infrared support was introduced in version 1.4a and tested with
+lirc-0.5.4 . To be able to use it you must install lirc and then:
+
+1. uncomment the 'HAVEIR' option in the 'Makefile'
+2. change irkeys.conf to match your /etc/lirc.conf file.
+3. run make
+
+With IR support, lircd must be run before rxcontrol, otherwise rxcontrol
+won't start. Run the script 'startir' to start the appropriate lirc daemons.
+
+Right now only the following keys are supported through the IR. Theese
+keys are used in 'normal' mode as this is described in the README
+
+K_PTRACK		IR_K_CHANNELUP
+K_NTRACK		IR_K_CHANNELDOWN
+K_PLAY			IR_K_PLAY
+K_PAUSE			IR_K_PAUSE
+K_STOP			IR_K_STOP
+K_FF			IR_K_FF
+K_FB			IR_K_REW

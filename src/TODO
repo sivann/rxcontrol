@@ -1,0 +1,31 @@
+TODO LIST
+---------
+OOOOO: Not at all
+*OOOO: Doesn't seem to be
+**OOO: Probably not
+***OO: Probably yes
+****O: Sure thing
+*****: yes yes yes!
+
+
+-rearrange songs feature in playlist editing mode
+ Useful:    ***OO
+ Difficult: *OOOO
+ Status:    Working on it
+
+-support for normal audio CDs 
+ Useful:    ****O
+ Difficult: ***OO
+ Status:    Working on it
+
+-file browsing inside select(): playing songs while selecting files and support
+ for selecting files with the remote control... 
+ Useful:    *****
+ Difficult: *****
+ Status:    Will work on this pretty soon
+
+-sort songs by artist/genre/song name... (hm)
+ Useful:    *OOOO
+ Difficult: **OOO
+ Status:    Humm..
+

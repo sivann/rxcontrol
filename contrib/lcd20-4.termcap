@@ -1,0 +1,8 @@
+lcd20-4|20-column lcd:\
+	:am:bs:eo:os\
+	:co#20:li#4:\
+	:cr=^M:\
+	:vb=\376F\376B0:\
+	:cm=\376G%r%+^A%+^A:\
+	:le=\376L:nd=\376M:cl=\014:
+

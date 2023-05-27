@@ -1,0 +1,3 @@
+From warcraft II :-) 
+The original sample is 8-bit/mono so the quality is not so good. I changed 
+the samples a little bit: made them 16-bit and added some stereo flanger.

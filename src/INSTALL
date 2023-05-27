@@ -1,0 +1,22 @@
+Installation instructions
+-------------------------
+You can just type './rxcontrol' to start it, or you may start rxcontrol from 
+init. Just add something like the following in /etc/inittab:
+
+rx:234:respawn:/home/sivann/develop/rxcontrol/rxcontrol
+
+Make sure that you have commented out the getty to virtual console 5 (or
+any virtual console specified in rxcontrol.conf) if rxcontrol is compiled 
+with -DCHVT
+
+For automounter support, make a link to the cdrom directory from where the
+rxcontrol file browsing starts. Then when you 'cd' to that directory,
+the CD gets automatically mounted. If you set it to 5 seconds, then
+when you unselect all the files from the playlist and wait for 5 seconds, 
+the CD can be ejected.
+
+For IR support, make sure lircd is running and you have enough
+permissions to read+write to /dev/lircd.
+
+You can put a message like "System halted" to be displayed in the lcd with the
+lcdecho utility in  /etc/rc.d/rc0.d/S00halt

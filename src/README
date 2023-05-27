@@ -1,0 +1,185 @@
+rxcontrol version 1.6
+----------------------
+
+(C) Spiros Ioannou 1998
+
+Send bugs(please)/comments to: sivann@cs.ntua.gr
+See 'CHANGELOG' for changes between versions
+
+Visit: http://www.softlab.ece.ntua.gr/~sivann/rxcontrol for more info.
+
+I'm proud to declare that the above url has been on slashdot! (slashdot.org)
+
+About this software
+-------------------
+This software is used with my "MP3-O-Phono" (C) hardware, a linux based
+player, without monitor or keyboard. It has a Matrix Orbital 20x4 LCD
+and 9 buttons at the front. It boots from a small HD, and has a CDROM
+for reading MP3 songs. The buttons are connected to the keyboard socket
+of the motherboard through a chip taken by a dissasembled keyboard, so 
+the input comes from stdin! This is much cheaper in money and time than
+connecting a serial or parallel keypad,and it can support up to 108 keys.
+
+COMPILING
+---------
+See 'COMPILE' for compiling instructions
+
+INSTALLING
+----------
+See 'INSTALL' for installation procedures.
+
+OPTIONS
+-------
+Running the program with '-h' gives a brief description of command-line options.
+
+Song name format
+----------------
+Song must be in the following format:
+"artist - song name.mp3"
+or
+"artist - song name - other info.mp3" 
+
+`other info' is not displayed on the LCD.
+
+The spaces before and after the '-' are optional.
+
+
+General Operation
+-----------------
+There are 3 states:
+
+	-normal
+	-file selection
+	-playlist editing
+
+when the program starts and when it plays a song it is in the normal state 
+For the hardware version, keyboard keys will be connected to buttons.
+
+All keys are the default keys defined in rxkeys.h
+
+*
+* For the hardware implementation I have done, only keys marked with '*' are
+* needed and used. Capital letters are implemented through a button <shift>
+* so you press a combination of 2 buttons. It has the label 'All' which means
+* for example that if 'v' (the stop button) erases the current entry, 'V' 
+* erases all the entries, e.t.c.
+*
+
+Commands  in normal mode
+------------------------
+Just type in the corresponding letter
+
+
+
+    f: enter file selection mode
+    p: enter playlist editing mode
+    l: browse through pre-compiled playlists
+   *u: load a menu capable of loading the previous 3 functions
+       plus a linux shutdown option
+    U: Upgrades the binary from floppy. File locations defined in
+       rxcontrol.h
+
+    Playing commands
+
+    r: toggle repeat flag
+    c: pause
+   *x: play/pause
+   *v: stop
+   *[: seek left / Scroll LCD left
+   *]: seek right / Scroll LCD right
+   *z: previous track / Go up in list browsing
+   *b: next track / Go down in list browsing
+    right arrow: seek right
+    left arrow:  seek left
+
+    Other commands
+
+    m: mute (don't press it, dont' know how to de-mute !)
+    ,: volume down (or arrow up)
+    .: volume up (or arrow down)
+    q: quit program
+
+
+
+Commands  in file selection mode
+--------------------------------
+Just type in the corresponding letter
+
+   *]: scroll display right
+   *[: scroll display left
+   *z: go up
+   *b: go down
+   *x: select current file
+   *r: make a random selection from all files in this directory
+    X: select all files in this directory
+    R: select all files from this directory and below 
+    V: clear playlist
+   *u: go back to normal mode
+
+
+
+Commands  in playlist editing mode
+----------------------------------
+Just type in the corresponding letter
+
+
+   *]: scroll display right
+   *[: scroll display left
+   *z: go up
+   *b: go down
+   *v: remove current entry from playlist
+   *V: clear playlist
+   *X: save playlist (to #PLDIR)
+   *r: randomly reorder the playlist
+   *u: go back to normal mode
+
+
+
+Commands  in playlist editing mode
+----------------------------------
+Just type in the corresponding letter
+
+   v: delete playlist from disk
+   <enter>: load current playlist
+
+
+
+Also NOTE:
+----------
+1.after pressing one of : stop/edit-playlist/file-browser , the playlist doesn't
+  restart from file #1, but only if stop pressed twice (i.e. pressed when 
+  already stopped) so you can continue listening from the current song by
+  pressing "play" and not from the beggining.
+
+2.playlists are saved as playlist-## where ## is a 2-digit number, in directory
+  pldir defined in rxcontrol.conf
+
+
+BUGS
+----
+
+None found before each release, but there are bugs. If you find bugs any please 
+mail them to sivann@cs.ntua.gr. 
+The 'none found' goes to rxcontrol, NOT to rxaudio which has many bugs causing 
+rxcontrol to fail sometimes. I've never seen any fatal ones of them to my PC 
+but the've been reported to me. Mail those to xaudio@mpegtv.com please. 
+
+
+CREDITS TO
+----------
+-All the people who expressed themselves positively about MP3-O-Phono
+-Bryan Mattern for the donnated IR hardwre. Thanks Bryan, I'd probably delay
+ IR support too long without your help.
+-Aaron Newsome for the bug reports.
+
+ANTI-CREDITS TO
+---------------
+All the people (MANY) who said: Why bother? wait a few years and you'll buy
+a commercial version. My reply to them is that when the commercial version
+is out, MP3-O-Phono will be using DVD media for 18.000 minutes = 12.5 days of
+continuous play per disk ;-)
+
+
+Spiros
+
+

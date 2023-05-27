@@ -1,0 +1,41 @@
+#!/bin/csh -f
+#
+#
+#conf2c version 0.2, Spiros Ioannou 1999
+#
+#Generate ir_loadkeys.c from irkeys.conf
+
+
+echo "Reading irkeys.conf"
+echo ""
+echo '/* AUTO GENERATED FROM conf2c. */' >ir_loadkeys.c
+echo '/* DO NOT EDIT                 */' >>ir_loadkeys.c
+echo '' >>ir_loadkeys.c
+echo '#include "rxkeys.h"' >>ir_loadkeys.c
+echo '#include "ir.h"' >> ir_loadkeys.c
+echo "" >>ir_loadkeys.c
+
+set count=1
+set lines=`cat irkeys.conf|egrep -v '^[[:space:]]+.*|^$|#'|wc -l`
+echo total lines=$lines
+echo '#define IRKEYS' $lines >ir_loadkeys.h
+echo "void ir_loadkeys()" >>ir_loadkeys.c
+echo "{" >>ir_loadkeys.c
+
+while ($count <= $lines)
+  set count2=`expr  $count - 1`
+  set line=`cat irkeys.conf|egrep -v '^[[:space:]]+.*|^$|#'| sed -e "$count p" -e '1,$d'`
+  set rxkey=`echo $line|awk '{print $1}'`
+  set irkey=`echo $line|awk '{print $2}'`
+  echo "\t"'keymap['$count2'].irkey='\"$irkey\"";" >>ir_loadkeys.c
+  echo "\t"'keymap['$count2'].rxkey='$rxkey";" >>ir_loadkeys.c
+  echo "" >>ir_loadkeys.c
+  echo -n "$count," 
+  set count=`expr  $count + 1`
+end
+/bin/echo "}" >>ir_loadkeys.c
+echo ""
+echo ""
+echo "Generated ir_loadkeys.h"
+echo "Generated ir_loadkeys.c"
+echo ""
