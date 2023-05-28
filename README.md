@@ -263,11 +263,5 @@ CREDITS TO
  IR support too long without your help.
 -Aaron Newsome for the bug reports.
 
-ANTI-CREDITS TO
----------------
-All the people (MANY) who said: Why bother? wait a few years and you'll buy
-a commercial version. My reply to them is that when the commercial version
-is out, MP3-O-Phono will be using DVD media for 18.000 minutes = 12.5 days of
-continuous play per disk ;-)
 
 ```
